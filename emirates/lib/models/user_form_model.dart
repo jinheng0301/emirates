@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserForm {
+class UserFormModel {
   late final String firstName;
   late final String lastName;
   late final String email;
@@ -9,7 +9,7 @@ class UserForm {
   late final int dateOfBirth;
   late final String country;
 
-  UserForm({
+  UserFormModel({
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -31,11 +31,11 @@ class UserForm {
     };
   }
 
-  static UserForm fromSnap(DocumentSnapshot<Object?> snap) {
+  static UserFormModel fromSnap(DocumentSnapshot<Object?> snap) {
     var snapshot = snap.data() as Map<String, dynamic>?;
 
     if (snapshot != null) {
-      return UserForm(
+      return UserFormModel(
         firstName: snapshot['firstName'],
         lastName: snapshot['lastName'],
         email: snapshot['email'],
@@ -46,7 +46,7 @@ class UserForm {
       );
     }
     else{
-      return UserForm(
+      return UserFormModel(
         firstName: '',
         lastName: '',
         email: '',

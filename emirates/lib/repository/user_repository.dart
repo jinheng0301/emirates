@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:emirates/models/user_form.dart';
+import 'package:emirates/models/user_form_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserRepository {
@@ -11,7 +11,7 @@ class UserRepository {
       .collection('skywards_users');
 
   // Store user form data to Firestore with better error handling
-  Future<String> storeUserData(UserForm userForm) async {
+  Future<String> storeUserData(UserFormModel userFormModel) async {
     try {
       print("Starting user registration process...");
 
@@ -20,8 +20,8 @@ class UserRepository {
       try {
         print("Attempting to create Firebase Auth user...");
         userCredential = await _auth.createUserWithEmailAndPassword(
-          email: userForm.email,
-          password: userForm.password,
+          email: userFormModel.email,
+          password: userFormModel.password,
         );
         print(
           "Firebase Auth user created successfully: ${userCredential.user?.uid}",
@@ -50,7 +50,7 @@ class UserRepository {
         try {
           // Add user ID to the data
           print("Preparing data for Firestore...");
-          Map<String, dynamic> userData = userForm.toJson();
+          Map<String, dynamic> userData = userFormModel.toJson();
           userData['uid'] = userCredential.user!.uid;
           userData['createdAt'] = Timestamp.now();
 
@@ -83,12 +83,12 @@ class UserRepository {
   }
 
   // Get user data from Firestore
-  Future<UserForm?> getUserData(String uid) async {
+  Future<UserFormModel?> getUserData(String uid) async {
     try {
       DocumentSnapshot doc = await _usersCollection.doc(uid).get();
 
       if (doc.exists) {
-        return UserForm.fromSnap(doc);
+        return UserFormModel.fromSnap(doc);
       }
       return null;
     } catch (e) {

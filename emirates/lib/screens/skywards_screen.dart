@@ -1,5 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:emirates/models/user_form.dart';
+import 'package:emirates/models/user_form_model.dart';
 import 'package:emirates/repository/user_repository.dart';
 import 'package:emirates/widgets/utils.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +78,7 @@ class _SkywardsScreenState extends State<SkywardsScreen> {
       }
 
       // Create user form data with validated fields
-      UserForm userForm = UserForm(
+      UserFormModel userForm = UserFormModel(
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
         email: _emailController.text.trim(),
