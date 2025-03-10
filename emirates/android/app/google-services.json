@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "17906073368",
+    "project_id": "emirates-7a4fd",
+    "storage_bucket": "emirates-7a4fd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17906073368:android:856f33e3326e36765ee86d",
+        "android_client_info": {
+          "package_name": "com.example.emirates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8SDk63MOUeDoEWJphiMacZ_wEh8wy6BU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
